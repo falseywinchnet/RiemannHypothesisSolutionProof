@@ -54,6 +54,12 @@ Non-goals (out of scope): numerical experiments, external CAS, or web lookups.
   lakefile.lean             <- Lake config
 ```
 
+### Workflow Utilities
+
+* `scripts/get_mathlib_cache.sh` downloads cached mathlib artifacts to speed up builds.
+* `scripts/new_component.py` scaffolds Lean files and matching tests.
+* `agents/prompts/verification_steps.txt` lists the standard verification sequence.
+
 ---
 
 ## Global Agent Contract
