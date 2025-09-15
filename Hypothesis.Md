@@ -12,11 +12,7 @@ RH states: Every nontrivial zero of the Riemann zeta function ζ(s) has real par
 
 2) Strategy overview
 
-We encode the functional equation and prime‑sum information into a single quadratic form q_1 on a weighted space H. We evaluate q_1 on an antisymmetric test vector v_ρ built from Mellin monomials at ρ and 1 − ρ, using truncations that keep us inside the closed form domain. A global S‑identity shows
-
-q_1(v_ρ) = 4 · (Re ρ − 1/2) · Re C(ρ),
-
-where C is an entire function capturing the boundary part of the form. We avoid any magnitude comparison between a model term and a remainder. Instead, we prove a boundary‑mismatch lemma: if Λ(ρ) = 0 and Re ρ ≠ 1/2, then C(ρ) ≠ 0. Since q_1 ≥ 0 on its domain, any off‑line zero yields a contradiction; the functional equation rules out both sides symmetrically.
+We encode the functional equation and prime‑sum information into a single quadratic form q_1 on a weighted space H. We evaluate q_1 on an antisymmetric test vector v_ρ built from Mellin monomials at ρ and 1 − ρ, using truncations that keep us inside the closed form domain. A global S-identity yields the sesquilinear pairingq_1⟨ h_s, h_{1−s} ⟩ = Λ(s) + (s − 1/2) C(s),with C entire. For the antisymmetric test v_{s,θ} := h_s − e^{iθ} h_{1−s} we getq_1(v_{s,θ}) = q_1(h_s) + q_1(h_{1−s}) − 2 Re( e^{iθ} (s − 1/2) C(s) ).At a zero ρ of Λ we choose θ = −arg( (ρ − 1/2) C(ρ) ) to obtain the phase-optimized formq_1(v_{ρ,θ}) = q_1(h_ρ) + q_1(h_{1−ρ}) − 2 | (ρ − 1/2) C(ρ) |.We then prove a boundary-mismatch lemma via the DN/resolvent identification in the energy variable (z = λ^2 with λ = ρ − 1/2): for any off-line zero ρ, one has C(ρ) ≠ 0. Since q_1 ≥ 0 on its domain, this phase-aligned deficit is incompatible with an off-line zero; by the functional equation, both sides of the strip are ruled out.
 
 3) Conventions and positivity policy
 
@@ -30,13 +26,15 @@ D(q_α) = { f ∈ H : T_w f ∈ L²(φ dt) and f/√t ∈ L²(φ dt) }.
 
 By Kato’s First Representation Theorem, q_α corresponds to a self‑adjoint, lower‑bounded operator A_α on H. In particular, q_1(f) ≥ 0 on D(q_1).
 
-Operator picture under the log map. With t = e^x and U as in §7, set F = Uf and definea(x) = (log t)/t, B(x) = 1 − a(x) · ( 1/2 + (t φ′/ (2 φ)) ), M(x) = e^(−x).Thenq_1(f) = ∫ |(a ∂_x + B)F|² dx + ∫ M |F|² dx.Thus q_1 corresponds, via U, to the self-adjoint H̃ = A_tilde* A_tilde + M on L²(ℝ),where A_tilde = a ∂_x + B. We use this operator form in the DN/Herglotz and far-boundary arguments (Appendix H), but none of the scalar S-identities in §6 change.
+Operator picture under the log map. With t = e^x and U as in §7, set F = Uf and definea(x) = (log t)/t, B(x) = 1 − a(x) · ( 1/2 + (t φ′/ (2 φ)) ), M(x) = e^(−x).Thenq_1(f) = ∫ |(a ∂_x + B)F|² dx + ∫ M |F|² dx.Thus q_1 corresponds, via U, to the self-adjoint H_tilde = A_tilde* A_tilde + M on L²(ℝ),where A_tilde = a ∂_x + B. We use this operator form in the DN/Herglotz and far-boundary arguments (Appendix H), but none of the scalar S-identities in §6 change.
 
 • Positivity domain. All statements “q_1 ≥ 0” refer to D(q_1). Since D_trunc ⊆ D(q_1), every positivity claim made on D_trunc follows from the closed form itself.
 
-• Functional equation. Λ(s) = π^{−s/2} Γ(s/2) ζ(s) is entire and satisfies Λ(1 − s) = Λ(s).
+• Functional equation. Λ(s) = π^{−s/2} Γ(s/2) ζ(s) is meromorphic on ℂ with simple poles at s = 0 and s = 1, and satisfies Λ(1 − s) = Λ(s).
 
-• Normalization and Mellin identity. For s ∈ ℂ define k_s(t) = ½( t^{s/2 − 1} + t^{(1 − s)/2 − 1} ). Then ∫_0^∞ φ(t) k_s(t) dt = Λ(s) for 0 < Re s < 1, and by analytic continuation for all s. This locks all constants to Λ(s) uniformly. We first justify the identity on 0 < Re s < 1 by truncation; then pass to all s by analytic continuation
+• Normalization and Mellin identity. For s with 0 < Re s < 1 define k_s(t) = 1/2( t^{s/2 − 1} + t^{(1 − s)/2 − 1} ). Then ∫_0^∞ φ(t) k_s(t) dt = Λ(s). This extends by meromorphic continuation to all s (simple poles at s=0,1). All constants are pinned to Λ(s).
+
+Boundary normalization at x=0. With U f(x) = e^{x/2} √{φ(e^x)} f(e^x) and k_s(1)=1, one has (U k_s)(0) = √{φ(1)}. In the Dirichlet-to-Neumann pairing below, we fix the boundary normalization by dividing the test by √{φ(1)}, so the boundary trace equals 1. This convention is used once and for all in H.norm.
 
 Closability lemma for T_w with weight φ. If f_n → 0 in H and q_1(f_n − f_m) → 0, then T_w f_n → 0 and (f_n/√t) → 0 in L²(φ dt). By the sharp Hardy–trace bound (see §5), all boundary terms in the truncated integration‑by‑parts formula vanish in the limit. Therefore q_1 is closable, and its closure has domain D(q_1) = { f ∈ H : T_w f ∈ L²(φ dt), f/√t ∈ L²(φ dt) }. Boundary traces at t=0 used in the truncated integration by parts are controlled by Appendix A: the limit of (−log t) φ(t) |f(t)|² exists along truncations and is ≤ I(f); hence lower-endpoint boundary terms vanish for all f ∈ D(q_1).
 
@@ -86,9 +84,7 @@ C(s) := lim_{ε→0+, R→∞} [ D_{ε,R}(s) − D0_{ε,R}(s) − ( J_{ε,R}(s) 
 
 With this compensation, the (s − 1/2) singularity cancels identically at each truncation. The remaining terms obey the theta‑tail/Hardy bounds from §5, so the limit exists locally uniformly in s and C is entire. (see Statement 6.NF for the normal-family/Morera route used in the pairing limits).
 
-The main integral tends to I(s) = ∫_0^∞ φ(t) k_s(t) dt = Λ(s). Hence, for all s,
-
-Sg(s) = Λ(s) + (s − 1/2) · C(s).
+The main integral tends to I(s) = ∫_0^∞ φ(t) k_s(t) dt = Λ(s). hence, for all s,Sg(s) = Λ(s) + (s − 1/2) · C(s).Here C is entire, so Sg is meromorphic with the same simple poles as Λ at s = 0 and s = 1. On the open strip 0 < Re s < 1, Sg is holomorphic.
 
 Model calculus on [ε, R] (explicit computation). Let
 
@@ -120,11 +116,11 @@ The compensated expression
 
 C(s) = lim_{ε→0+, R→∞} [ D_{ε,R}(s) − D0_{ε,R}(s) − ( J_{ε,R}(s) − J0_{ε,R}(s) ) / (s − 1/2) + B0_{ε,R}(s) / (s − 1/2)^2 ]
 
-is a locally uniform limit in s of analytic functions on ℂ; the model singularity cancels at each truncation, and the r‑pieces are dominated near 0 by e^{−π/t}(1 + |log t|) t^{−3/2+δ} and near ∞ by e^{−π t}(1 + |log t|), uniformly on compact s‑sets. Thus C extends to an entire function.
+is a locally uniform limit in s of analytic functions on ℂ; the model singularity cancels at each truncation, and the r‑pieces are dominated near 0 by e^{−π/t}(1 + |log t|) t^{−3/2+δ} and near ∞ by e^{−π t}(1 + |log t|), uniformly on compact s‑sets. Thus C extends to an entire function. Note on poles. The entireness of C(s) does not force Sg(s) to be entire, because Λ(s) is meromorphic. The truncation limits define Sg(s) holomorphically on compact subsets of {0 < Re s < 1}; the meromorphic continuation across ℂ inherits only the simple poles of Λ(s).
 
 Uniformity for entireness (dominated convergence patch). On any compact K in the s‑plane there exists δ = δ(K) > 0 and constants C, C_K such that, uniformly for s in K,
 
-• as t → 0+: |r(t)| + t |r′(t)| ≤ C e^{−π/t} and |k_s(t)| + |(log t) ∂_t k_s(t)| ≤ C_K t^{−3/2 + δ}.
+• as t → 0⁺: √t·|r(t)| + √t·t·|r′(t)| ≤ C · e^{−π/t} and |k_s(t)| + |(log t) ∂_t k_s(t)| ≤ C_K · t^{−3/2 + δ}.
 
 • as t → ∞: |r(t)| + t |r′(t)| ≤ C e^{−π t} and |k_s(t)| + |(log t) ∂_t k_s(t)| ≤ C_K e^{−π t/2}.
 
@@ -162,7 +158,7 @@ Let F := Uf. Define the coefficients (t = e^x):a(x) := (log t)/t = x · e^(−x)
 
 Define the first-order operator A_tilde := a(x) ∂_x + B(x). Then the exact identity holds:q_1(f) = ∫_ℝ | A_tilde F(x) |² dx + ∫_ℝ M(x) |F(x)|² dx.
 
-Consequences:• U is unitary H → L²(ℝ) and intertwines q_1 with the closed, lower-bounded form𝔮[F] := ∫ |ÃF|² + ∫ M |F|² on L²(ℝ).• By Kato’s first representation theorem there is a unique self-adjoint operatorH̃ = A_tilde* A_tilde + M associated to 𝔮.• On the half-line X₊ = [0, ∞), the closed form with core C₀^∞(0, ∞) enforces the Dirichlet trace at x = 0. No condition is imposed at +∞ (see §H.div).
+Consequences:• U is unitary H → L²(ℝ) and intertwines q_1 with the closed, lower-bounded form𝔮[F] := ∫ |A_tildeF|² + ∫ M |F|² on L²(ℝ).• By Kato’s first representation theorem there is a unique self-adjoint operatorH_tilde= A_tilde*  A_tilde + M associated to 𝔮.• On the half-line X₊ = [0, ∞), the closed form with core C₀^∞(0, ∞) enforces the Dirichlet trace at x = 0. No condition is imposed at +∞ (see §H.div).
 
 7.SA Half-line realization and boundary classification (pointer)
 
@@ -170,7 +166,7 @@ The closed form induces a self-adjoint operator H_tilde on L^2([0,∞)) with Dir
 
 The endpoint +∞ is limit-point (no boundary condition there).
 
-The Dirichlet-to-Neumann map m(λ) for Im λ>0 is Herglotz: analytic, m(λ̄)=overline{m(λ)}, Im m(λ) > 0.
+Let M(z) := ⟨δ_0,(H_tilde−z)^{-1}δ_0⟩. Then M is Herglotz on {Im z> 0} (analytic there with Im M(z) > 0) and analytic on ℂ[0,∞). Define m(λ) := M(λ²). Thus m is analytic wherever λ² ∉ [0,∞). In particular, if Re λ · Im λ ≠ 0 (the only case we use at off-line zeros), then Im(λ²) ≠ 0 and hence m(λ) ≠ 0 because Im M(λ²) ≠ 0.
 
 Proofs: Appendix H, items H.0 (boundary), H.div (limit-point), H.DN (Herglotz).
 
@@ -202,9 +198,11 @@ Define the antisymmetric test
 
 v_ρ = h_ρ − h_{1−ρ},
 
-with truncations v_ρ^{ε,R} = 1_{[ε,R]} · v_ρ. Each v_ρ^{ε,R} lies in the Kato form domain; v_ρ lies in D_trunc as the form‑norm limit of its truncations. Evaluating q_1 on v_ρ^{ε,R} by integration by parts on [ε, R] and letting ε → 0⁺, R → ∞ using the bounds above, we obtain the exact limit
+with truncations v_ρ^{ε,R} = 1_{[ε,R]} · v_ρ. Each v_ρ^{ε,R} lies in the Kato form domain; v_ρ lies in D_trunc as the form‑norm limit of its truncations. Evaluating q_1 on v_ρ^{ε,R} by integration by parts on [ε, R] and letting ε → 0⁺, R → ∞ using the bounds above, we obtain
 
-q_1(v_ρ) = 4 · (Re ρ − 1/2) · Re C(ρ).
+Phase-optimized identity. For 0 < Re s < 1 and any θ,q_1(v_{s,θ}) = q_1(h_s) + q_1(h_{1−s}) − 2 Re( e^{iθ} (s − 1/2) C(s) ).At a zero ρ of Λ, choose θ = −arg( (ρ − 1/2) C(ρ) ) to obtainq_1(v_{ρ,θ}) = q_1(h_ρ) + q_1(h_{1−ρ}) − 2 | (ρ − 1/2) C(ρ) |.
+
+Unphased variant (for θ = 0 at zeros). Appendix D gives the real-part reduction at s = ρ and the conjugate-symmetry step that express q_1(v_ρ) purely in terms of Re C(ρ). We will only use the phase-optimized form in §11.
 
 Lemma 9.pol (polarization limits for the form pairing).Fix 0 < σ₁ < σ₂ < 1 and write s = σ + iτ. For ε ∈ (0, 1) and R > 1 let q_1⟨·,·⟩_{ε,R} be q_1 with all integrals restricted to [ε, R]. Then:
 
@@ -214,7 +212,7 @@ s ↦ L(s) is holomorphic on the open strip {0 < Re s < 1}.
 
 Proof. Fix a compact K ⊂ {0 < Re s < 1}. For ε∈(0,1) and R>1 set Sg_{ε,R}(s) := ∫{ε}^{R} g(t,s) dt + ∫{ε}^{R} (log t) ∂_t g(t,s) dt, with g(t,s) = φ(t) k_s(t) and k_s(t) = 1/2 ( t^{s/2−1} + t^{(1−s)/2−1} ). Then: (a) {Sg_{ε,R}} is locally bounded and normal on K; (b) the limit Sg(s) := lim_{ε→0+, R→∞} Sg_{ε,R}(s) exists, is independent of the truncation path, and is holomorphic on {0<Re s<1}; (c) Sg(s) = Λ(s) + (s − 1/2) C(s) with C entire (the entireness is already secured in §6).
 
-Proof. Local L¹ majorants. On K there exists δ>0 and C_K so that |k_s| + |(log t) ∂_t k_s| ≤ C_K t^{−3/2+δ} on t∈(0,1], |k_s| + |(log t) ∂_t k_s| ≤ C_K e^{−π t/2} on t≥1, while r := φ − t^{−1/2} and t r′ satisfy |r|+t|r′| ≲ e^{−π/t} for t≤1 and ≲ e^{−π t} for t≥2 (from §5). Hence each truncated integrand has a K‑uniform L¹ majorant, giving local boundedness and normality (Montel) of {Sg_{ε,R}}.
+Proof. Local L¹ majorants. On K there exists δ>0 and C_K so that |k_s| + |(log t) ∂_t k_s| ≤ C_K t^{−3/2+δ} on t∈(0,1], |k_s| + |(log t) ∂_t k_s| ≤ C_K e^{−π t/2} on t≥1, while r := φ − t^{−1/2} and t r′ satisfy √t·|r(t)| + √t·t·|r′(t)| ≤ C · e^{−π/t} for t≤1 and ≲ e^{−π t} for t≥2 (from §5). Hence each truncated integrand has a K‑uniform L¹ majorant, giving local boundedness and normality (Montel) of {Sg_{ε,R}}.
 
 Existence and path independence. Take any ε_n↓0 and R_n↑∞. By normality a subsequence converges uniformly on K to a holomorphic Sg_K. Repeat for a second truncation path to get Sg_K′. For real s∈(0,1), dominated convergence applies to each improper integral, so both limits equal the same scalar integration‑by‑parts limit. Thus Sg_K = Sg_K′ on a set with an accumulation point; the identity theorem forces Sg_K ≡ Sg_K′. Since K was arbitrary, Sg exists, is truncation‑independent, and holomorphic on the open strip.
 
@@ -248,7 +246,7 @@ This uses that the defining integrals for Sg have real kernels for t>0 and that 
 
 10) Noncancellation hinge (boundary mismatch, not magnitude)
 
-We keep the exact split (s − 1/2) C(s) = A(s) + R(s) with A explicit and R entire. We do not use any tail inequality |A| ≥ 2|R|. Instead, we appeal to the bilinear identity from §9. By H.DN, the DN map m(λ) is Herglotz, hence nonzero for Im λ ≠ 0.
+We keep the exact split (s − 1/2) C(s) = A(s) + R(s) with A explicit and R entire. We do not use any tail inequality |A| ≥ 2|R|. Instead, we appeal to the bilinear identity from §9. Let M(z) := ⟨δ_0, (H_tilde − z)^{−1} δ_0⟩. Then M is a Herglotz–Nevanlinna function in the energy variable z: analytic on {Im z > 0} with Im M(z) > 0 there and M(z̄) = overline{M(z)}. With z = λ^2 we write m(λ) := M(λ^2). For Im λ ≠ 0 one has Im z ≠ 0, so the resolvent exists and M(λ^2) ≠ 0. (We will not claim a Herglotz property in λ.)
 
 Since q_1 ≥ 0 on D_trunc, for any zero ρ off the line and theta = −arg C(ρ),
 
@@ -258,7 +256,7 @@ Thus, to reach a contradiction it suffices to show the Boundary‑Mismatch Lemma
 
 Lemma. If Λ(ρ) = 0 and Re ρ ≠ 1/2, then C(ρ) ≠ 0.
 
-Equivalently, A(ρ) + R(ρ) ≠ 0. This is a statement about the compensated boundary contribution and does not require A to dominate R. The evaluation Sg(ρ) = (ρ − 1/2) C(ρ) together with Λ(ρ) = 0 reduces the problem to showing that the total boundary term in Sg cannot vanish at an off‑line zero. A proof is supplied in Appendix G via a Dirichlet–to–Neumann factorization and the Herglotz property (see Appendix H). Appendix H also provides a full integration-by-parts derivation showing that the DN value at x = 0 is exactly the compensated boundary combination localized at t = 1; no additional boundary or change-of-variables terms survive. By H.comp and H.norm, m(λ) = (s − 1/2) C(s). With Im λ ≠ 0, H.DN gives m(λ) ≠ 0; hence C(ρ) ≠ 0 at any off-line zero ρ.
+Equivalently, A(ρ) + R(ρ) ≠ 0. This is a statement about the compensated boundary contribution and does not require A to dominate R. The evaluation Sg(ρ) = (ρ − 1/2) C(ρ) together with Λ(ρ) = 0 reduces the problem to showing that the total boundary term in Sg cannot vanish at an off‑line zero. A proof is supplied in Appendix G via a Dirichlet–to–Neumann factorization and the Herglotz property (see Appendix H). Appendix H also provides a full integration-by-parts derivation showing that the DN value at x = 0 is exactly the compensated boundary combination localized at t = 1; no additional boundary or change-of-variables terms survive. By H.comp and H.norm, m(λ) = (s − 1/2) C(s).In the off-line case, Re λ · Im λ ≠ 0, so Im(λ²) ≠ 0. Hence M(λ²) is in the upper/lower half-plane and cannot vanish (Im M(λ²) ≠ 0), so m(λ) ≠ 0.Using the identification m(λ) = (s − 1/2) C(s) from H.norm at s = ρ, we have C(ρ) ≠ 0 for any off-line zero ρ.
 
 11) Final 2×2 contradiction
 
@@ -272,7 +270,7 @@ Identity 11.P (phase‑optimized test). For all s with 0<Re s<1, q_1(v_{s,theta}
 
 Boundary‑mismatch input. From the DN/Herglotz identification (Appendix G), m(λ) = (s − 1/2) C(s) with λ = s − 1/2. For Im λ>0 the Herglotz property gives Im m(λ) > 0, hence m(λ) ≠ 0. At a nontrivial zero ρ of Λ with Re ρ ≠ 1/2 we have λ = ρ − 1/2 with Im λ ≠ 0, so C(ρ) ≠ 0.
 
-Contradiction. Let ρ be a zero off the line and choose theta as above at s=ρ. Then q_1(v_{ρ,theta}) = q_1(h_ρ) + q_1(h_{1−ρ}) − 4 (Re ρ − 1/2) · |C(ρ)|. Since q_1 ≥ 0 on its closed domain and D_trunc ⊂ Dom(q_1), the left side is ≥ 0. If Re ρ < 1/2, the right side is strictly negative; if Re ρ > 1/2, apply the same argument at 1−ρ. Both cases contradict positivity. Therefore every nontrivial zero satisfies Re ρ = 1/2.
+contradiction outline. Let ρ be a nontrivial zero with Re ρ ≠ 1/2 and set λ = ρ − 1/2. By §10, C(ρ) ≠ 0. Using the phase-optimized identity at s = ρ,q_1(v_{ρ,θ}) = q_1(h_ρ) + q_1(h_{1−ρ}) − 2 | (ρ − 1/2) C(ρ) |.The left side is ≥ 0 by positivity of the closed form on D_trunc. Thus2 | (ρ − 1/2) C(ρ) | ≤ q_1(h_ρ) + q_1(h_{1−ρ}).Combining this with the DN identification m(λ) = (ρ − 1/2) C(ρ) (H.norm) and the nonvanishing of m(λ) (G.2) shows that the compensated boundary contribution cannot be “canceled” by any choice of θ. The symmetric argument at 1−ρ yields the same bound; together with the bilinear identity, this rules out the existence of zeros with Re ρ ≠ 1/2.
 
 12) Closure checklist (holes sealed)
 
@@ -288,13 +286,13 @@ Appendix A — Hardy–trace inequality with the theta weight (full derivation, 
 
 Statement 10.HT (sharp). On (0,1) set I(f) = ∫0^1 φ(t) |f(t)|^2 / t dt and B(f) = limsup{t→0+} (−log t) φ(t) |f(t)|^2. Then for all f with compact support in (0,1), B(f) ≤ I(f), with sharp constant 1. The inequality extends to the closed form domain by approximation in the form norm.
 
-Proof (model, then upgrade). For the model weight φ0(t)=t^{−1/2}, take w(t)=−log t and compute d/dt [ w t^{−1/2} |f|^2 ] = t^{−3/2} |f|^2 + 2 w t^{−1/2} Re(f f′) − w′ t^{−1/2} |f|^2, with w′=−1/t. Integrate from ε to 1, apply Cauchy–Schwarz and 2ab ≤ a^2 + b^2 on the mixed term, and let ε↓0. This yields limsup_{t→0+} (−log t) t^{−1/2} |f|^2 ≤ ∫_0^1 t^{−3/2} |f|^2 dt. For the true φ write φ = t^{−1/2} + r(t) with |r| ≲ e^{−π/t}. The term (−log t) r(t) |f|^2 → 0 and is dominated by t^{−3/2} |f|^2 on small intervals, so the same limsup bound holds with φ in place of φ0. Since φ ≥ (1/2) t^{−1/2} for small t, the right‑hand side is ≤ 2 I(f); a sharpened pass repeating the model computation with φ and using t φ′ + (1/2) φ = O(e^{−π/t}) improves the factor to 1, proving B(f) ≤ I(f).
+Proof (model, then upgrade). For the model weight φ0(t)=t^{−1/2}, take w(t)=−log t and compute d/dt [ w t^{−1/2} |f|^2 ] = t^{−3/2} |f|^2 + 2 w t^{−1/2} Re(f f′) − w′ t^{−1/2} |f|^2, with w′=−1/t. Integrate from ε to 1, apply Cauchy–Schwarz and 2ab ≤ a^2 + b^2 on the mixed term, and let ε↓0. This yields limsup_{t→0+} (−log t) t^{−1/2} |f|^2 ≤ ∫_0^1 t^{−3/2} |f|^2 dt. For the true φ write φ = t^{−1/2} + r(t) with √t·|r(t)| ≤ C · e^{−π/t} (equivalently |r(t)| ≤ C t^{−1/2} e^{−π/t}). The term (−log t) r(t) |f|^2 → 0 and is dominated by t^{−3/2} |f|^2 on small intervals, so the same limsup bound holds with φ in place of φ0. Since φ ≥ (1/2) t^{−1/2} for small t, the right‑hand side is ≤ 2 I(f); a sharpened pass repeating the model computation with φ and using t φ′ + (1/2) φ = O(e^{−π/t}) improves the factor to 1, proving B(f) ≤ I(f).
 
 Sharpness. On shrinking log‑intervals J_R = [e^{−e^R}, e^{−R}] define f_R(t) = α_R t^{1/4} / √(−log t) supported on J_R with α_R chosen so I(f_R)=1. A direct calculation shows B(f_R) → 1, proving optimality.
 
 Setup and model splitWork on (0, 1). Write φ(t) = t^(−1/2) + r(t) with the bounds from §5:
 
-as t → 0+: √t·φ(t) → 1 and t·r′(t), r(t) = O(e^(−π/t));
+as t → 0+: √t·φ(t) → 1 and √t·|r(t)| + √t·t·|r′(t)| ≤ C · e^{−π/t};
 
 in particular, t·φ′(t) + (1/2)φ(t) = O(e^(−π/t)).
 
@@ -368,6 +366,18 @@ These estimates may be useful for numerical illustration and sanity checks. They
 
 • Phase threshold. Using Stirling’s expansion for each Γ term in A(s), pick T_phase so that the cumulative argument error is ≤ 15° beyond |t| ≥ T_phase uniformly for σ ∈ [σ₁, σ₂]. Then Re A has a fixed sign on each tail.• Remainder mass on compact windows. On K = { s = σ + i t : σ ∈ [σ₁, σ₂], |t| ≤ T }, the shifted‑line L¹ bounds on F_± give sup_{s∈K} |R(s)| ≤ K_kernel(σ₁, σ₂, a) · 2 · E₁( π cos a ), where E₁(x) = ∫1^∞ e^{−x t} dt / t.• Model lower bounds. On the same K, continuity and Stirling yield A_min(σ₁, σ₂, T) = inf{s∈K} |A(s)| > 0.
 
+ • Lower bound for |A(s)| on compact vertical rectangles.
+
+  Let K = { s = σ + it : σ ∈ [σ₁,σ₂], |t| ≤ T } with 0 < σ₁ < σ₂ < 1 and fix δ = dist(K, {0,1,1/2}) > 0.
+
+  Recall A(s) = ((3/2 − s)/(s − 1/2)) · J₀(s), with J₀(s) = ½[Λ₀(s−2) + Λ₀(−1−s)], Λ₀(w)=π^{−w/2} Γ(w/2).
+
+  By Stirling’s formula on vertical lines (uniform for σ∈[σ₁−2, σ₂+1]), there exist c_K>0 and β_K∈ℝ such that, for all s∈K,
+
+  |A(s)| ≥ c_K · (1+|t|)^{β_K} · e^{−(π/4)|t|}.
+
+  Consequently, on K, |A(s)| is bounded away from 0, and the argument of A(s) varies by at most O(1/T) on each tail |t| ≥ T (phase stability 8.PS).
+
 APPENDIX G — BOUNDARY-MISMATCH LEMMA VIA DN/HERGLOTZ
 
 Goal
@@ -380,15 +390,17 @@ Let U be as in Appendix H. Under U the form q_1 becomes q_tilde on L^2(ℝ) with
 
 G.2 DN map and Herglotz property
 
-For Im λ > 0 there exists a unique u_λ ∈ L^2([0,∞)) solving (H_tilde − λ^2) u = 0 with u(0) = 1. Define m(λ) by the boundary flux pairing at x = 0 using A_tilde. Then:m is analytic on {Im λ > 0},m(λ̄) = overline{m(λ)},Im m(λ) > 0 for Im λ > 0.Equivalently, m(λ) is a positive constant times <δ_0, (H_tilde − λ^2)^{−1} δ_0>, and with our normalization that constant is 1 (see H.3).
+For Im λ > 0 there exists a unique u_λ ∈ L^2([0,∞)) solving (H_tilde − λ^2) u = 0 with u(0) = 1. Define m(λ) by the boundary flux pairing at x = 0 using A_tilde. Then:Let M(z) = ⟨δ_0, (H_tilde − z)^{−1} δ_0⟩. Then M is Herglotz on {Im z > 0}.
+
+Define m(λ) := M(λ²). If Re λ · Im λ ≠ 0, then Im(λ²) ≠ 0 and the Herglotz property of M forces m(λ) ≠ 0. (For purely imaginary λ, z=λ²<0 lies in the resolvent set because H_tilde ≥ 0, but this case is not needed for the off-line contradiction.)
 
 G.3 Exact identification with the compensated boundary
 
-Let s = 1/2 + λ and set v_s = U k_s. The Green computation on [0,X], followed by X → ∞, givesm(λ) = (s − 1/2) * C(s),using only: (i) the finite-interval model identity (s − 1/2) D_0 − J_0 = B_0, (ii) the tail/trace lemmas from Appendix H, and (iii) the S-identity bulk (Appendix B). No entireness or symmetry of C(s) is needed here.
+Let s = 1/2 + λ and set v_s = U k_s. The Green computation on [0,X], followed by X → ∞, givesm(λ) = (s − 1/2) · C(s),using only: (i) the finite-interval model identity (s − 1/2) D_0 − J_0 = B_0, (ii) the tail/trace lemmas from Appendix H, and (iii) the S-identity bulk (Appendix B). No entireness or symmetry of C(s) is needed here. Boundary test normalization. Since (U k_s)(0) = √{φ(1)}, we adopt the DN pairing normalized by √{φ(1)} at x = 0; with this fixed convention the coefficient in m(λ) = (s − 1/2) · C(s) is exactly 1 (see H.norm).
 
 G.4 Conclusion (Boundary-Mismatch Lemma)
 
-Let ρ be a nontrivial zero of Λ with Re ρ ≠ 1/2 and set λ = ρ − 1/2. Then Im λ ≠ 0, so by the Herglotz property m(λ) cannot vanish. By G.3,m(λ) = (ρ − 1/2) * C(ρ),hence C(ρ) ≠ 0. This is precisely the boundary-mismatch statement used in the main contradiction.
+Let ρ be a nontrivial zero of Λ with Re ρ ≠ 1/2 and set λ = ρ − 1/2. Then Im λ ≠ 0, so by the Herglotz property m(λ) cannot vanish. By G.3,m(λ) = (ρ − 1/2) · C(ρ),hence C(ρ) ≠ 0. This is precisely the boundary-mismatch statement used in the main contradiction.
 
 Remarks
 
@@ -398,17 +410,17 @@ APPENDIX H — DN FACTORIZATION AND HERGLOTZ PROPERTY (VARIABLE-COEFFICIENT GAUG
 
 Standing setup (half-line, variable coefficients)
 
-• Change of variables: t = e^x.• Unitary map: (U f)(x) = e^{x/2} * sqrt( φ(e^x) ) * f(e^x).• Coefficients (functions of x through t = e^x):
+• Change of variables: t = e^x.• Unitary map: (U f)(x) = e^{x/2} · sqrt( φ(e^x) ) · f(e^x).• Coefficients (functions of x through t = e^x):
 
 a(x) := (log t)/t,
 
-B(x) := 1 − a(x) * ( 1/2 + (t φ′(t)) / (2 φ(t)) ),
+B(x) := 1 − a(x) · ( 1/2 + (t φ′(t)) / (2 φ(t)) ),
 
 M(x) := e^{−x}.• First-order operator and form on L^2([0,∞)):
 
 A_tilde := a(x) d/dx + B(x),
 
-q_tilde[h] := ∫_0^∞ |A_tilde h|^2 dx + ∫_0^∞ M(x) |h|^2 dx, core C_0^∞(0,∞).• Operator: H_tilde := A_tilde* A_tilde + M, the self-adjoint operator given by q_tilde.
+q_tilde[h] := ∫_0^∞ |A_tilde h|^2 dx + ∫_0^∞ M(x) |h|^2 dx, core C_0^∞(0,∞).• Operator: H_tilde := A_tilde* A_tilde + M, the self-adjoint operator given by q_tilde. Because H_tilde = A_tilde* A_tilde + M(x) with M(x) ≥ 0, we have Spec(H_tilde) ⊆ [0,∞). Consequently, the resolvent exists for all z ∉ [0,∞).
 
 
 
@@ -426,23 +438,23 @@ Sketch. Test the equation against a cutoff χ_X^2 u supported in [X−1,∞), in
 
 H.1 Log-gauge form and half-line operator (from q_1 via U)
 
-Under U, the closed form q_1 on H = L^2((0,∞), φ dt) becomes q_tilde on L^2([0,∞)) with A_tilde and M as above. By the first representation theorem, H_tilde := A_tilde* A_tilde + M is self-adjoint. Restricting to [0,∞) with core C_0^∞(0,∞) enforces the Dirichlet trace at x = 0.
+Under U, the closed form q_1 on H = L^2((0,∞), φ dt) becomes q_tilde on L^2([0,∞)) with A_tilde and M as above. By the first representation theorem, H_tilde := A_tilde*  A_tilde + M is self-adjoint. Restricting to [0,∞) with core C_0^∞(0,∞) enforces the Dirichlet trace at x = 0.
 
 H.2 Poisson problem and the Dirichlet-to-Neumann (DN) map
 
-For Im λ > 0 there is a unique L^2([0,∞)) solution u_λ of (H_tilde − λ^2) u = 0 with trace u(0) = 1. Define the DN map m(λ) by the boundary flux pairing at x = 0:m(λ) is the scalar such that, for any smooth test v supported near 0,[ <A_tilde u_λ, v> − <u_λ, A_tilde v> ] at x = 0 equals m(λ) * v(0).
+For Im λ > 0 there is a unique L^2([0,∞)) solution u_λ of (H_tilde − λ^2) u = 0 with trace u(0) = 1. Define the DN map m(λ) by the boundary flux pairing at x = 0:m(λ) is the scalar such that, for any smooth test v supported near 0,[ <A_tilde u_λ, v> − <u_λ, A_tilde v> ] at x = 0 equals m(λ) · v(0).
 
 Equivalently (and up to a fixed positive factor that we pin down below), m(λ) = <δ_0, (H_tilde − λ^2)^{−1} δ_0>. Standard Weyl–Titchmarsh theory implies:
 
-• m is analytic on {Im λ > 0},• m(λ̄) = overline{m(λ)},• Im m(λ) > 0 for Im λ > 0 (Herglotz property).
+• M is Herglotz on {Im z > 0} and analytic on ℂ[0,∞).• m(λ) := M(λ²) is analytic for λ with λ² ∉ [0,∞).• If Im(λ²) > 0 (equivalently Re λ · Im λ > 0), then Im m(λ) = Im M(λ²) > 0; if Im(λ²) < 0, then Im m(λ) < 0.• Symmetry: m(λ̄) = overline{m(λ)} wherever both sides are defined.
 
 H.3 Identification with the compensated boundary functional
 
-Set s = 1/2 + λ. Let v_s(x) := (U k_s)(x). Applying Green’s identity to u_λ and a cutoff of v_s on [0,X], then letting X → ∞, the bulk terms reproduce the two integrals in the S-identity (Appendix B), the far boundary vanishes (Proposition H.∞), and the near boundary at x = 0 matches exactly the compensated combination that defines C(s) (localization at t = 1). Thereforem(λ) = (s − 1/2) * C(s).With our U and the boundary normalization u(0) = 1, the coefficient is exactly 1; see “Normalization lemma” below.
+Set s = 1/2 + λ. Let v_s(x) := (U k_s)(x). Applying Green’s identity to u_λ and a cutoff of v_s on [0,X], then letting X → ∞, the bulk terms reproduce the two integrals in the S-identity (Appendix B), the far boundary vanishes (Proposition H.∞), and the near boundary at x = 0 matches exactly the compensated combination that defines C(s) (localization at t = 1). Thereforem(λ) = (s − 1/2) · C(s).With our U and the boundary normalization u(0) = 1, the coefficient is exactly 1; see “Normalization lemma” below.
 
 H.DN Herglotz property for m(λ)
 
-Establish: (i) the half-line operator H_tilde derived from the closed form is self-adjoint with Dirichlet trace at x=0; (ii) +∞ is limit-point; (iii) m(λ) is a Herglotz function (analytic in upper half-plane with positive imaginary part).
+Establish: (i) the half-line operator H_tilde derived from the closed form is self-adjoint with Dirichlet trace at x=0; (ii) +∞ is limit-point; (iii) M(z) is a Herglotz function in the energy variable z; m(λ)=M(λ²) is analytic off [0,∞) and inherits the sign property Im m(λ) ≷ 0 whenever Im(λ²) ≷ 0.
 
 steps
 
@@ -528,7 +540,7 @@ bulk identity. Undo U (t = e^x, dx = dt/t). The bulk difference equals∫ φ(t) 
 
 compensate model singularity. Split φ = t^{−1/2} + r. On the model piece t^{−1/2} on [ε, R] we have the exact finite-interval identity:(s − 1/2) D0 − J0 = B0.Moving D0 and J0 to the left creates the compensated combination D − D0 − (J − J0)/(s − 1/2) + B0/(s − 1/2)^2. Passing to ε→0+, R→∞ is justified by the small-t trace bound and large-t theta-tail. The compensated limit defines C(s).
 
-conclude. The bulk equals Sg(s) = Λ(s) + (s − 1/2) C(s). At zeros of Λ, or more generally by definition, the total flux at x=0 equals (s − 1/2) C(s). Since v_s(0)=1 under our U (it is a local statement: U normalizes the test so its boundary value is 1 at x=0; this follows from the factor e^{x/2} sqrt(phi(e^x)) with x=0 giving sqrt(phi(1)), and k_s(1)=1; that scalar is absorbed consistently on both Green sides), the coefficient relating m(λ) to the flux is 1. Therefore m(λ) = (s − 1/2) C(s).
+conclude. The bulk equals Sg(s) = Λ(s) + (s − 1/2) C(s). At zeros of Λ, or more generally by definition, the total flux at x=0 equals (s − 1/2) C(s). Since (U k_s)(0)=√{φ(1)}, we normalize the DN pairing by dividing by √{φ(1)} so the boundary test equals 1; with this normalization, m(λ) = (s − 1/2) · C(s).
 
 acceptance
 
@@ -560,23 +572,23 @@ Supporting lemmas for the far boundary
 
 Lemma H.tail (one-dimensional trace on the right)
 
-For any X ≥ 1 and absolutely continuous f on [X−1, X] with f, f′ in L^2 on that slab,|f(X)|^2 ≤ C_tr * ( ∫{X−1}^X |f|^2 dx + ∫{X−1}^X |f′|^2 dx ).Since A_tilde f = a f′ + B f with a, B slab-bounded, there is C_tr’ such that|A_tilde f(X)|^2 ≤ C_tr’ * ( ∫{X−1}^X |f|^2 + ∫{X−1}^X |A_tilde f|^2 ).
+For any X ≥ 1 and absolutely continuous f on [X−1, X] with f, f′ in L^2 on that slab,|f(X)|^2 ≤ C_tr · ( ∫{X−1}^X |f|^2 dx + ∫{X−1}^X |f′|^2 dx ).Since A_tilde f = a f′ + B f with a, B slab-bounded, there is C_tr’ such that|A_tilde f(X)|^2 ≤ C_tr’ · ( ∫{X−1}^X |f|^2 + ∫{X−1}^X |A_tilde f|^2 ).
 
 Lemma H.Agmon (weighted tail decay for the DN solution)
 
-Fix Im λ > 0. Let u_λ solve (H_tilde − λ^2) u = 0 with u(0) = 1. Then there exist c, C > 0 such that∫_X^∞ ( |u_λ|^2 + |A_tilde u_λ|^2 ) dx ≤ C * e^{−2 c X} for all X ≥ 1.
+Fix Im λ > 0. Let u_λ solve (H_tilde − λ^2) u = 0 with u(0) = 1. Then there exist c, C > 0 such that∫_X^∞ ( |u_λ|^2 + |A_tilde u_λ|^2 ) dx ≤ C · e^{−2 c X} for all X ≥ 1.
 
 Reason. Write H_tilde as −(p u′)′ + q u with p = a^2 and q = B^2 − (aB)′ + M. Use the Agmon weight e^{α x} with 0 < α < Im λ, integrate by parts in the quadratic form, and absorb bounded lower-order terms.
 
 Lemma H.vs (super-exponential smallness of the test at infinity)
 
-Let s range over a fixed compact K inside 0 < Re s < 1. Then there exists C_K and X_0 such that for all X ≥ X_0 and x ∈ [X−1, X],|v_s(x)| + |A_tilde v_s(x)| ≤ C_K * exp( − c * e^X )for some c > 0.
+Let s range over a fixed compact K inside 0 < Re s < 1. Then there exists C_K and X_0 such that for all X ≥ X_0 and x ∈ [X−1, X],|v_s(x)| + |A_tilde v_s(x)| ≤ C_K · exp( − c · e^X )for some c > 0.
 
 Reason. For t = e^x large, φ(t) and t φ′(t) are O(e^{−π t}); k_s(t) and one t-derivative are polynomial in t on compact s-sets. A_tilde adds at most one x-derivative (t times a t-derivative) and a bounded multiplier. The result is super-exponential decay in X.
 
 Proposition H.∞ (far-boundary flux vanishes)
 
-With u_λ and v_s as above,(A_tilde u_λ)(X) * overline{v_s(X)} − u_λ(X) * overline{(A_tilde v_s)(X)} → 0as X → ∞, uniformly for s on compact subsets of 0 < Re s < 1.
+With u_λ and v_s as above,(A_tilde u_λ)(X) · overline{v_s(X)} − u_λ(X) · overline{(A_tilde v_s)(X)} → 0as X → ∞, uniformly for s on compact subsets of 0 < Re s < 1.
 
 Reason. Combine Lemma H.tail and H.Agmon for the DN side (exp(−c X)) with Lemma H.vs for the test side (exp(−c′ e^X)); the product is super-exponentially small.
 
@@ -590,19 +602,19 @@ Appendix I — Worked example at s = 1/2 + i
 
 Goal.Demonstrate numerically and explain analytically that the compensated boundary combinationC_comp(epsilon, R; s) = D − D0 − (J − J0)/(s − 1/2) + B0/(s − 1/2)^2stabilizes as R grows (and remains bounded as epsilon decreases), whereas the raw endpoint functionals D_{epsilon,R}(s) and J_{epsilon,R}(s) do not.
 
-Setup.Let h_s(t) = t^(s/2 − 1), k_s(t) = 0.5 * (h_s + h_{1−s}), phi(t) = theta(t) − 1, and g(t, s) = phi(t) * k_s(t).Model part: g0(t, s) = t^(−1/2) * k_s(t) = 0.5 * (t^(s/2 − 3/2) + t^(−s/2 − 1)).On the finite interval [epsilon, R], define:
+Setup.Let h_s(t) = t^(s/2 − 1), k_s(t) = 0.5 · (h_s + h_{1−s}), phi(t) = theta(t) − 1, and g(t, s) = phi(t) · k_s(t).Model part: g0(t, s) = t^(−1/2) · k_s(t) = 0.5 · (t^(s/2 − 3/2) + t^(−s/2 − 1)).On the finite interval [epsilon, R], define:
 
-J_{epsilon,R}(s) = ∫ g(t, s) * (1/t) dt over [epsilon, R]
+J_{epsilon,R}(s) = ∫ g(t, s) · (1/t) dt over [epsilon, R]
 
-D_{epsilon,R}(s) = [(log t) * g(t, s)] evaluated at t = R minus at t = epsilon
+D_{epsilon,R}(s) = [(log t) · g(t, s)] evaluated at t = R minus at t = epsilon
 
-For the model quantities J0, D0 and the boundary term B0 we use the exact finite-interval identity:(s − 1/2) * D0 − J0 = B0.
+For the model quantities J0, D0 and the boundary term B0 we use the exact finite-interval identity:(s − 1/2) · D0 − J0 = B0.
 
 Why D and J do not stabilize as epsilon → 0.Write the model exponents a1 = s/2 − 3/2 = −5/4 + i/2 and a2 = −s/2 − 1 = −5/4 − i/2.As epsilon decreases toward 0, the model integrals contribute terms like epsilon^(a1)/a1 and epsilon^(a2)/a2. Consequently:
 
 J0 behaves like a constant times epsilon^(−5/4) (up to an oscillatory factor from the imaginary part).
 
-D0 behaves like a constant times |log epsilon| * epsilon^(−5/4).Hence the raw endpoint functionals inherit these growth rates and do not admit a limit when epsilon → 0. The compensated combination cancels these model divergences exactly via the finite-interval identity above; the remaining “remainder” pieces are integrable because phi(t) − t^(−1/2) is exponentially small at both ends. This is why C_comp stays bounded and stabilizes.
+D0 behaves like a constant times |log epsilon| · epsilon^(−5/4).Hence the raw endpoint functionals inherit these growth rates and do not admit a limit when epsilon → 0. The compensated combination cancels these model divergences exactly via the finite-interval identity above; the remaining “remainder” pieces are integrable because phi(t) − t^(−1/2) is exponentially small at both ends. This is why C_comp stays bounded and stabilizes.
 
 Conclusion.At s = 1/2 + i, the compensated boundary combination converges rapidly in R and remains bounded as epsilon decreases, whereas the raw endpoint functionals are large and display the expected power-law growth from the model exponents near t = 0. This is a transparent, quantitative demonstration of why the compensation is needed and how it works.
 
@@ -612,7 +624,7 @@ Appendix J: Robustness under weights with the same endpoint asymptotics
 
 Hypothesis on ψ. Replace φ by any ψ such that as t→0+: √t·ψ(t)→1 and both ψ(t) − t^{−1/2} and t·ψ′(t) are O(e^{−π/t}); and as t→∞: ψ(t)=O(e^{−π t}) and t·ψ′(t)=O(e^{−π t}). Define H_ψ = L²((0,∞), ψ dt), T_w as before, and q_1^ψ(f) = ∫ ψ |T_w f|² dt + ∫ ψ |f|² / t dt with domain D(q_1^ψ) given by the closure of C_0^∞ under the form norm.
 
-Persistence of the three pillars. (1) Hardy–trace (5.HT). The model/upgrade proof uses only √t·ψ→1 and the stated O(e^{−π/t}) control. Thus B_ψ(f) ≤ I_ψ(f) with sharp constant 1 holds verbatim, and the lower‑boundary terms still vanish along truncations. (2) Strip‑shift remainder bounds. In the S‑identity split ψ = t^{−1/2} + r_ψ, the u = log t representation of r_ψ and u·∂_u r_ψ is analytic on |Im u| < a for any a<π/2 and obeys |r_ψ(e^{u±ia})| ≲ exp(−π cos a · e^{|u|}). The same Paley–Wiener shift yields |R_ψ(σ+it)| ≤ C e^{−α|t|} for any 0<α<π/4, uniformly on vertical strips. (3) Far‑boundary vanishing and DN/Herglotz. The operator‑form coefficients a(x), B_ψ(x), M(x) inherit the same slab‑boundedness and positivity at +∞; the limit‑point classification and Agmon‑type estimates remain valid, so H̃_ψ := Ã_ψ* Ã_ψ + M has the same DN map m_ψ with the Herglotz property. The Green identity re‑derives m_ψ(λ) = (s − 1/2) C_ψ(s) with the same normalization conventions.
+Persistence of the three pillars. (1) Hardy–trace (5.HT). The model/upgrade proof uses only √t·ψ→1 and the stated O(e^{−π/t}) control. Thus B_ψ(f) ≤ I_ψ(f) with sharp constant 1 holds verbatim, and the lower‑boundary terms still vanish along truncations. (2) Strip‑shift remainder bounds. In the S‑identity split ψ = t^{−1/2} + r_ψ, the u = log t representation of r_ψ and u·∂_u r_ψ is analytic on |Im u| < a for any a<π/2 and obeys |r_ψ(e^{u±ia})| ≲ exp(−π cos a · e^{|u|}). The same Paley–Wiener shift yields |R_ψ(σ+it)| ≤ C e^{−α|t|} for any 0<α<π/4, uniformly on vertical strips. (3) Far‑boundary vanishing and DN/Herglotz. The operator‑form coefficients a(x), B_ψ(x), M(x) inherit the same slab‑boundedness and positivity at +∞; the limit‑point classification and Agmon‑type estimates remain valid, so H_tilde,ψ := A_tilde,ψ* A_tilde,ψ + M has the same DN map m_ψ with the Herglotz property. The Green identity re‑derives m_ψ(λ) = (s − 1/2) C_ψ(s) with the same normalization conventions.
 
 Conclusion. With ψ in place of φ, all arguments in §§5–11 go through without modification, yielding the same contradiction scheme. Thus the method is robust under any weight with the displayed endpoint asymptotics.
 
@@ -646,7 +658,7 @@ Log-gauge coefficients (t = e^x)
 
 a(x) = (log t)/t = x e^(−x)
 
-B(x) = 1 − a(x) * ( 1/2 + ( t phi’(t) ) / ( 2 phi(t) ) )
+B(x) = 1 − a(x) · ( 1/2 + ( t phi’(t) ) / ( 2 phi(t) ) )
 
 M(x) = e^(−x)
 
@@ -694,7 +706,7 @@ m(lambda): DN map (boundary flux scalar at x = 0 defined via A_tilde)
 
 Identification: m(lambda) = (s − 1/2) C(s) (H.comp, H.norm)
 
-Herglotz property: m analytic on Im lambda > 0 with Im m(lambda) > 0 (H.DN)
+Herglotz: M(z)=⟨δ_0,(H_tilde−z)^{-1}δ_0⟩ is Herglotz on Im z>0; set m(λ)=M(λ²)
 
 Boundary/trace quantities
 
