@@ -1,0 +1,6 @@
+Time to clarity: approximately 6 minutes.
+
+Gameplan:
+1. Provide a script that automates mathlib cache retrieval to speed builds.
+2. Develop a template generator for new Lean files and tests.
+3. Document verification steps in `agents/prompts` for consistent execution.
