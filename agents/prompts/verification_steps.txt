@@ -1,0 +1,4 @@
+Retrieve the mathlib cache and run verification:
+
+1. ./scripts/get_mathlib_cache.sh
+2. ./scripts/verify.sh
