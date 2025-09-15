@@ -1,0 +1,19 @@
+version: 1
+meta:
+  thesis_ref: "sections 9–10, appendices C, G, H"
+  maintained_by: "agent"
+  defaults:
+    owner: "agent"
+    reviewers: ["author"]
+    acceptance_gates: ["build", "no_sorry", "linters", "tests"]
+
+components:
+  - id: core-measure-topology
+    title: Core measure and topology foundations
+    kind: foundation
+    inputs: []
+    outputs: ["Lean namespaces for measures, weighted L2, Sobolev traces"]
+    deps: []
+    acceptance:
+      - "imports compile"
+      - "trace inequality stubs present"
