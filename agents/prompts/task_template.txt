@@ -1,3 +1,0 @@
-Task: {{id}}
-Description: {{title}}
-Instructions: {{instructions}}
